@@ -463,7 +463,7 @@ if __name__ == "__main__":
         password = account["password"]
         cookie = cookie_list[i] if i < len(cookie_list) else ""
         
-        display_user = user if user else f"账号{account_index}"
+        display_user = f"账号{account_index}({user})" if user else f"账号{account_index}"
         
         print(f"\n==== 账号 {display_user} 开始签到 ====")
         
@@ -540,5 +540,6 @@ if __name__ == "__main__":
             print("所有Cookie已成功保存")
         except Exception as e:
             print(f"保存Cookie变量异常: {e}")
+
 
 
