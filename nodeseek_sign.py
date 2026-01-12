@@ -484,7 +484,8 @@ if __name__ == "__main__":
             
             if hadsend:
                 try:
-                    notification_msg = f"{display_user} 签到成功：{msg}"
+                    tg_user_label = f"账号{account_index}(Gentleman)"
+                    notification_msg = f"{tg_user_label} 签到成功：{msg}"
                     if stats:
                         notification_msg += f"\n{stats['period']}已签到{stats['days_count']}天，共获得{stats['total_amount']}个鸡腿，平均{stats['average']}个/天"
                     send("NodeSeek 签到", notification_msg)
@@ -514,7 +515,8 @@ if __name__ == "__main__":
                         
                         if hadsend:
                             try:
-                                notification_msg = f"{display_user} 签到成功：{msg}"
+                                tg_user_label = f"账号{account_index}(Gentleman)"
+                                notification_msg = f"{tg_user_label} 签到成功：{msg}"
                                 if stats:
                                     notification_msg += f"\n{stats['period']}已签到{stats['days_count']}天，共获得{stats['total_amount']}个鸡腿，平均{stats['average']}个/天"
                                 send("NodeSeek 签到", notification_msg)
@@ -526,7 +528,8 @@ if __name__ == "__main__":
                     print(f"{display_user} 登录失败，无法获取新Cookie")
                     if hadsend:
                         try:
-                            send("NodeSeek 登录失败", f"{display_user} 登录失败")
+                            tg_user_label = f"账号{account_index}(Gentleman)"
+                            send("NodeSeek 登录失败", f"{tg_user_label} 登录失败")
                         except Exception as e:
                             print(f"发送通知失败: {e}")
             else:
@@ -540,7 +543,4 @@ if __name__ == "__main__":
             print("所有Cookie已成功保存")
         except Exception as e:
             print(f"保存Cookie变量异常: {e}")
-
-
-
 
