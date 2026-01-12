@@ -465,7 +465,7 @@ if __name__ == "__main__":
         
         display_user = f"账号{account_index}({user})" if user else f"账号{account_index}"
         
-        print(f"\n==== 账号 {display_user} 开始签到 ====")
+        print(f"\n==== {display_user} 开始签到 ====")
         
         if cookie:
             result, msg = sign(cookie, ns_random)
@@ -473,7 +473,7 @@ if __name__ == "__main__":
             result, msg = "invalid", "无Cookie"
 
         if result in ["success", "already"]:
-            print(f"账号 {display_user} 签到成功: {msg}")
+            print(f"{display_user} 签到成功: {msg}")
             
             print("正在查询签到收益统计...")
             stats, stats_msg = get_signin_stats(cookie, 30)
@@ -484,7 +484,7 @@ if __name__ == "__main__":
             
             if hadsend:
                 try:
-                    notification_msg = f"账号 {display_user} 签到成功：{msg}"
+                    notification_msg = f"{display_user} 签到成功：{msg}"
                     if stats:
                         notification_msg += f"\n{stats['period']}已签到{stats['days_count']}天，共获得{stats['total_amount']}个鸡腿，平均{stats['average']}个/天"
                     send("NodeSeek 签到", notification_msg)
@@ -500,7 +500,7 @@ if __name__ == "__main__":
                     print("登录成功，使用新Cookie重新签到...")
                     result, msg = sign(new_cookie, ns_random)
                     if result in ["success", "already"]:
-                        print(f"账号 {display_user} 签到成功: {msg}")
+                        print(f"{display_user} 签到成功: {msg}")
                         cookies_updated = True
                         
                         print("正在查询签到收益统计...")
@@ -514,23 +514,23 @@ if __name__ == "__main__":
                         
                         if hadsend:
                             try:
-                                notification_msg = f"账号 {display_user} 签到成功：{msg}"
+                                notification_msg = f"{display_user} 签到成功：{msg}"
                                 if stats:
                                     notification_msg += f"\n{stats['period']}已签到{stats['days_count']}天，共获得{stats['total_amount']}个鸡腿，平均{stats['average']}个/天"
                                 send("NodeSeek 签到", notification_msg)
                             except Exception as e:
                                 print(f"发送通知失败: {e}")
                     else:
-                        print(f"账号 {display_user} 重新签到仍然失败: {msg}")
+                        print(f"{display_user} 重新签到仍然失败: {msg}")
                 else:
-                    print(f"账号 {display_user} 登录失败，无法获取新Cookie")
+                    print(f"{display_user} 登录失败，无法获取新Cookie")
                     if hadsend:
                         try:
-                            send("NodeSeek 登录失败", f"账号 {display_user} 登录失败")
+                            send("NodeSeek 登录失败", f"{display_user} 登录失败")
                         except Exception as e:
                             print(f"发送通知失败: {e}")
             else:
-                print(f"账号 {display_user} 无法重新登录: 未配置用户名或密码")
+                print(f"{display_user} 无法重新登录: 未配置用户名或密码")
     
     if cookies_updated and cookie_list:
         print("\n==== 处理完毕，保存更新后的Cookie ====")
@@ -540,6 +540,7 @@ if __name__ == "__main__":
             print("所有Cookie已成功保存")
         except Exception as e:
             print(f"保存Cookie变量异常: {e}")
+
 
 
 
